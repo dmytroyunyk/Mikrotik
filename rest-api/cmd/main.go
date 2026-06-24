@@ -12,6 +12,7 @@ import (
 
 	"github.com/dmytroyunyk/MikrotikApi/config"
 	"github.com/dmytroyunyk/MikrotikApi/internal/api"
+	"github.com/dmytroyunyk/MikrotikApi/internal/firewall"
 	"github.com/dmytroyunyk/MikrotikApi/internal/mikrotik"
 )
 
@@ -43,8 +44,13 @@ func main() {
 		slog.Info("connection to MikroTik established", "host", cfg.MikroTik.Host)
 	}
 
-	svc := mikrotik.NewService(mt)
-	handler := api.NewHandler(svc, mt)
+	mikrotikSvc := mikrotik.NewService(mt)
+	fwService := firewall.NewServise(mt)
+
+	fwHandler := firewall.NewHandler(fwService)
+
+	handler := api.NewHandler(mikrotikSvc, mt, fwHandler)
+
 	router := api.NewRouter(handler)
 
 	srv := &http.Server{
