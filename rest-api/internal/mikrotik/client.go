@@ -38,7 +38,7 @@ func NewClient(host, username, password string, timeout time.Duration, retries i
 	}
 }
 
-func (c *Client) get(ctx context.Context, path string, out any) error {
+func (c *Client) Get(ctx context.Context, path string, out any) error {
 	url := c.baseURL + path
 
 	var lastErr error
@@ -101,5 +101,5 @@ func (c *Client) IsHealthy() bool {
 
 func (c *Client) Ping(ctx context.Context) error {
 	var result map[string]any
-	return c.get(ctx, "/system/identity", &result)
+	return c.Get(ctx, "/system/identity", &result)
 }

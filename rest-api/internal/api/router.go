@@ -9,6 +9,9 @@ import (
 func NewRouter(h *Handler) http.Handler {
 	mux := http.NewServeMux()
 
+	mux.HandleFunc("GET /api/firewall/filter", h.Firewall.GetFilterRules)
+	mux.HandleFunc("GET /api/firewall/nat", h.Firewall.GetNATRules)
+	mux.HandleFunc("GET /api/firewall/address-list", h.Firewall.GetAddressList)
 	mux.HandleFunc("GET /health", h.Health)
 	mux.HandleFunc("GET /api/snapshot", h.Snapshot)
 	mux.HandleFunc("GET /api/system", h.SystemInfo)

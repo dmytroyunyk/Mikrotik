@@ -17,7 +17,7 @@ func NewService(client *Client) *Service {
 
 func (s *Service) GetSystemResource(ctx context.Context) (*SystemResource, error) {
 	var res SystemResource
-	if err := s.client.get(ctx, "/system/resource", &res); err != nil {
+	if err := s.client.Get(ctx, "/system/resource", &res); err != nil {
 		return nil, fmt.Errorf("system/resource: %w", err)
 	}
 	return &res, nil
@@ -25,7 +25,7 @@ func (s *Service) GetSystemResource(ctx context.Context) (*SystemResource, error
 
 func (s *Service) GetInterfaces(ctx context.Context) ([]Interface, error) {
 	var result []Interface
-	if err := s.client.get(ctx, "/interface", &result); err != nil {
+	if err := s.client.Get(ctx, "/interface", &result); err != nil {
 		return nil, fmt.Errorf("interface: %w", err)
 	}
 	return result, nil
@@ -33,7 +33,7 @@ func (s *Service) GetInterfaces(ctx context.Context) ([]Interface, error) {
 
 func (s *Service) GetIPAddresses(ctx context.Context) ([]IPAddress, error) {
 	var result []IPAddress
-	if err := s.client.get(ctx, "/ip/address", &result); err != nil {
+	if err := s.client.Get(ctx, "/ip/address", &result); err != nil {
 		return nil, fmt.Errorf("ip/address: %w", err)
 	}
 	return result, nil
@@ -41,7 +41,7 @@ func (s *Service) GetIPAddresses(ctx context.Context) ([]IPAddress, error) {
 
 func (s *Service) GetRoutes(ctx context.Context) ([]Route, error) {
 	var result []Route
-	if err := s.client.get(ctx, "/ip/route", &result); err != nil {
+	if err := s.client.Get(ctx, "/ip/route", &result); err != nil {
 		return nil, fmt.Errorf("ip/route: %w", err)
 	}
 	return result, nil
@@ -49,7 +49,7 @@ func (s *Service) GetRoutes(ctx context.Context) ([]Route, error) {
 
 func (s *Service) GetDHCPLeases(ctx context.Context) ([]DHCPLease, error) {
 	var result []DHCPLease
-	if err := s.client.get(ctx, "/ip/dhcp-server/lease", &result); err != nil {
+	if err := s.client.Get(ctx, "/ip/dhcp-server/lease", &result); err != nil {
 		return nil, fmt.Errorf("dhcp-server/lease: %w", err)
 	}
 	return result, nil

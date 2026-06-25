@@ -6,16 +6,22 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/dmytroyunyk/MikrotikApi/internal/firewall"
 	"github.com/dmytroyunyk/MikrotikApi/internal/mikrotik"
 )
 
 type Handler struct {
-	svc *mikrotik.Service
-	mt  *mikrotik.Client
+	svc      *mikrotik.Service
+	mt       *mikrotik.Client
+	Firewall *firewall.Handler
 }
 
-func NewHandler(svc *mikrotik.Service, mt *mikrotik.Client) *Handler {
-	return &Handler{svc: svc, mt: mt}
+func NewHandler(svc *mikrotik.Service, mt *mikrotik.Client, fw *firewall.Handler) *Handler {
+	return &Handler{
+		svc:      svc,
+		mt:       mt,
+		Firewall: fw,
+	}
 }
 
 type apiResponse struct {
