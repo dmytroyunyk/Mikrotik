@@ -1,0 +1,21 @@
+mikrotik:
+  adresses: "192.168.88.1:8728"
+  username: "admin"
+  password: "${MIKROTIK_PASSWORD}"
+
+firewall:
+  ban_thershold: 10 
+  ban_duration_minutes: 60
+  whitelist: 
+  - "192.168.88.0/24"
+  - "127.0.0.1"
+
+telegram:
+  token: "..."
+  chat_id: "..."
+
+storage:
+  path: "./data/defender.db" # sqlite 
+
+log:
+  level: "info" # debug, info, warn, error
