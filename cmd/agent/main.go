@@ -23,7 +23,7 @@ func main() {
 	logger := utils.NewLogger(cfg.Log.Level)
 	logger.Info("starting Mikrotik Intelligent Defender")
 
-	client := mikrotik.NewСlient(
+	client := mikrotik.NewClient(
 		cfg.MikroTik.Address,
 		cfg.MikroTik.Username,
 		cfg.MikroTik.Password,
