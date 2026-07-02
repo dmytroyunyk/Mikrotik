@@ -14,3 +14,18 @@ docker-run:
 
 clean:
 	rm -rf bin/
+
+docker-build:
+	docker-compose -f deployments/docker-compose.yml build
+	
+docker-run:
+	docker-compose -f deployments/docker-compose.yml up -d
+
+docker-stop:
+	docker-compose -f deployments/docker-compose.yml down
+
+docker-logs:
+	docker-compose -f deployments/docker-compose.yml logs -f
+
+docker-restart:
+	docker-compose -f deployments/docker-compose.yml restart
