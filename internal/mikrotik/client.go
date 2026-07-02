@@ -13,7 +13,7 @@ type Client struct {
 	conn     *routeros.Client
 }
 
-func Newclient(address, username, password string) *Client {
+func NewСlient(address, username, password string) *Client {
 	return &Client{
 		Address:  address,
 		Username: username,
