@@ -1,0 +1,27 @@
+version: "3.8"
+
+services:
+  agent:
+    build:
+      context: ..
+      dockerfile: deployments/Dockerfile
+
+    container_name: mikrotik-defender
+
+    restart: unless-stopped
+
+    volumes:
+      - ../configs/config.yaml:/app/configs/config.yaml:ro
+      - defender-data:/app/data
+
+enviroment: -TZ=Europe/Warszawa
+
+logging: 
+  driver: "json-file"
+  options:
+    max-size: "10m"
+    max-file: "3"
+
+volumes:
+  defender-data:
+
